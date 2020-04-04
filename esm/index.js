@@ -28,13 +28,27 @@ export function createElement(type, props, ...children) {
 }
 
 function setAttributes(element, attributes) {
-  for (let [name, value] of Object.entries(attributes)) {
+  for (const [name, value] of Object.entries(attributes)) {
     if (value != null) {
-      if (name == "className") {
-        name = "class";
+      if (name == "style") {
+        setStyleProperties(element, value);
+      } else if (name == "form") {
+        element.setAttribute("form", value);
+      } else {
+        element[name] = value;
       }
+    }
+  }
+}
 
-      element.setAttribute(name, value);
+function setStyleProperties(element, properties) {
+  const style = element.style;
+
+  if (typeof properties == "string") {
+    style.cssText = properties;
+  } else {
+    for (const [name, value] of Object.entries(properties)) {
+      style[name] = value;
     }
   }
 }
