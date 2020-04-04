@@ -1,0 +1,15 @@
+{
+  "name": "@k0michi/hyperscript-jsx",
+  "version": "1.0.0",
+  "license": "MIT",
+  "main": "./cjs/index.js",
+  "module": "./esm/index.js",
+  "devDependencies": {
+    "@babel/cli": "^7.8.4",
+    "@babel/core": "^7.9.0",
+    "@babel/plugin-transform-modules-commonjs": "^7.9.0"
+  },
+  "scripts": {
+    "build": "babel ./esm -d ./cjs"
+  }
+}
